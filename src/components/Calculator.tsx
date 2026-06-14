@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Target, Receipt, ArrowRight, Compass, Flame, Users } from 'lucide-react';
+import { Target, Receipt, ArrowRight } from 'lucide-react';
 
 interface CalculatorProps {
   onOpenBooking: () => void;
@@ -8,7 +8,7 @@ interface CalculatorProps {
 export default function Calculator({ onOpenBooking }: CalculatorProps) {
   const [arrTarget, setArrTarget] = useState<number>(3); // ARR millions
   const [selectedNeeds, setSelectedNeeds] = useState<string[]>([
-    'Branding & Storytelling', 'Lead Generation'
+    'Branding & Positioning', 'Lead Generation & Ads'
   ]);
 
   const toggleNeed = (need: string) => {
@@ -32,99 +32,109 @@ export default function Calculator({ onOpenBooking }: CalculatorProps) {
 
   const calcs = getCalculations();
 
+  const needsList = [
+    { title: 'Branding & Positioning', index: '[01]' },
+    { title: 'Ads & Social Campaigns', index: '[02]' },
+    { title: 'Talent Recruitment', index: '[03]' },
+    { title: 'Lead Generation & Ads', index: '[04]' },
+    { title: 'Workflows & Automation', index: '[05]' },
+    { title: 'Local Marketing', index: '[06]' }
+  ];
+
   return (
     <section 
       id="calculator-section" 
-      className="py-32 bg-[#FAF9F6] border-t border-zinc-200/55 relative overflow-hidden"
+      className="py-36 bg-black relative overflow-hidden"
     >
+      <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+      
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute top-[20%] left-[-10%] w-[450px] h-[450px] bg-purple-200/20 rounded-full blur-[140px]" />
+        <div className="absolute top-[20%] left-[-10%] w-[450px] h-[450px] bg-purple-900/5 rounded-full blur-[140px]" />
       </div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         
         {/* Upper Token */}
         <div className="flex justify-center mb-8">
-          <span className="font-mono text-[9px] tracking-[0.25em] text-zinc-600 uppercase font-bold border border-black/10 bg-black/5 px-4 py-1.5 rounded-full">
-            INTERACTIVE MODELER
+          <span className="font-mono text-[9px] tracking-[0.25em] text-[#A1A1AA] uppercase font-bold border border-white/10 bg-white/5 px-4 py-1.5 rounded-full">
+            GROWTH ESTIMATOR
           </span>
         </div>
 
         {/* Header Title */}
-        <div className="space-y-4 mb-20 text-center max-w-3xl mx-auto flex flex-col items-center">
-          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-zinc-900 font-normal tracking-tight">
-            Model Your Scale Velocity
+        <div className="space-y-4 mb-24 text-center max-w-3xl mx-auto flex flex-col items-center">
+          <h2 className="font-serif text-5xl sm:text-6xl lg:text-7xl text-white font-normal tracking-tight">
+            Estimate Your Scale.
           </h2>
-          <div className="w-16 h-[1px] bg-zinc-200 my-4" />
-          <p className="font-sans text-xs sm:text-sm text-zinc-600 font-light tracking-wide max-w-lg leading-relaxed">
-            Specify your desired Annual Recurring Revenue goal and check your required pillars. Observe how our system models operational integration times instantly.
+          <div className="w-16 h-[1px] bg-zinc-800 my-4" />
+          <p className="font-sans text-xs sm:text-sm text-zinc-400 font-light tracking-wide max-w-md mx-auto leading-relaxed">
+            Select your yearly revenue goal and choose the services you need. Get immediate recommendations on staffing, launch times, and potential results.
           </p>
         </div>
 
-        {/* Calculator workspace layout */}
-        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        {/* BLUEPRINT WORKSPACE LAYOUT (NO BULKY CARDS) */}
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch border-t border-b border-white/10 py-12">
           
-          {/* Left Panel - Target & Pillars check */}
-          <div className="lg:col-span-12 xl:col-span-7 bg-white border border-zinc-200/80 w-full rounded-[20px] p-8 sm:p-10 space-y-10 shadow-soft">
+          {/* Left Side: System Inputs with clean dividers */}
+          <div className="lg:col-span-12 xl:col-span-7 space-y-12 pr-0 lg:pr-8">
             
             {/* ARR Target Benchmark */}
-            <div className="space-y-5">
+            <div className="space-y-6">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <Target className="w-4 h-4 text-[#7C3AED] animate-pulse" />
-                  <span className="text-[10px] font-mono tracking-widest text-[#A1A1AA] uppercase font-bold">Revenue Benchmark Target</span>
+                  <Target className="w-4 h-4 text-purple-400" />
+                  <span className="text-[10px] font-mono tracking-[0.3em] text-[#A1A1AA] uppercase font-bold">YEARLY REVENUE GOAL</span>
                 </div>
-                <div className="font-mono text-xs text-zinc-400 font-bold font-sans">
-                  ARR Target: <strong className="text-[#7C3AED] text-lg font-serif font-normal">${arrTarget}M/yr</strong>
+                <div className="font-serif text-sm text-zinc-400">
+                  Target ARR: <span className="text-white font-normal text-xl">${arrTarget}M/yr</span>
                 </div>
               </div>
               
-              <input
-                id="arr-calculator-slider"
-                type="range"
-                min="1"
-                max="15"
-                step="1"
-                value={arrTarget}
-                onChange={(e) => setArrTarget(Number(e.target.value))}
-                className="w-full h-1.5 bg-zinc-200 rounded-lg appearance-none cursor-pointer accent-[#7C3AED] block"
-              />
-              <div className="flex items-center justify-between text-[10px] font-mono text-zinc-500 font-bold font-sans">
-                <span>$1M (Emergent Startup)</span>
-                <span>$8M (Expansion Scale)</span>
-                <span>$15M (Enterprise Anchor)</span>
+              <div className="relative pt-2">
+                <input
+                  id="arr-calculator-slider"
+                  type="range"
+                  min="1"
+                  max="15"
+                  step="1"
+                  value={arrTarget}
+                  onChange={(e) => setArrTarget(Number(e.target.value))}
+                  className="w-full h-[1px] bg-zinc-800 appearance-none cursor-pointer accent-[#7C3AED] relative z-10"
+                />
+                <div className="flex items-center justify-between text-[8px] font-mono text-zinc-500 font-bold pt-4 uppercase tracking-widest">
+                  <span>$1M (Early Stage)</span>
+                  <span>$8M (Mid Market)</span>
+                  <span>$15M+ (High Growth)</span>
+                </div>
               </div>
             </div>
 
-            {/* Checkboxes Area */}
-            <div className="space-y-5 pt-4 border-t border-zinc-200">
-              <span className="text-[10px] font-mono tracking-widest text-[#A1A1AA] uppercase block font-bold">Active Capability Areas</span>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {[
-                  'Branding & Storytelling',
-                  'Social Media Marketing',
-                  'Talent Placement / Recruitment',
-                  'Lead Generation',
-                  'Organizational Consulting',
-                  'Location footprints'
-                ].map((need) => {
-                  const isChecked = selectedNeeds.includes(need);
+            {/* Checkboxes Editorial Rows */}
+            <div className="space-y-6 pt-8 border-t border-white/5">
+              <span className="text-[10px] font-mono tracking-[0.3em] text-[#A1A1AA] uppercase block font-bold">SERVICES YOU REQUIRE</span>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {needsList.map((need) => {
+                  const isChecked = selectedNeeds.includes(need.title);
                   return (
                     <button
-                      key={need}
-                      onClick={() => toggleNeed(need)}
-                      className={`flex items-center p-4 rounded-xl border text-left transition-all text-xs font-sans cursor-pointer ${
+                      key={need.title}
+                      onClick={() => toggleNeed(need.title)}
+                      className={`flex items-center justify-between p-4 transition-all text-xs font-sans border-b cursor-pointer ${
                         isChecked 
-                          ? 'bg-[#7C3AED]/5 border-[#7C3AED]/30 text-[#7C3AED] font-bold shadow-sm' 
-                          : 'bg-zinc-50 border-zinc-200 text-zinc-600 hover:border-zinc-300'
+                          ? 'border-purple-500/50 text-white font-normal bg-purple-950/5' 
+                          : 'border-white/5 text-zinc-500 hover:text-zinc-300 hover:border-white/10'
                       }`}
                     >
-                      <div className={`w-4 h-4 rounded border mr-3 flex items-center justify-center transition-all ${
-                        isChecked ? 'bg-[#7C3AED] border-[#7C3AED] text-white font-bold' : 'border-zinc-300'
-                      }`}>
-                        {isChecked && <span className="text-[9px] font-mono font-bold">✓</span>}
+                      <div className="flex items-center space-x-3 text-left">
+                        <span className="font-mono text-[8px] text-zinc-500 mr-1">{need.index}</span>
+                        <span className="tracking-wide">{need.title}</span>
                       </div>
-                      <span>{need}</span>
+                      <div className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center transition-all ${
+                        isChecked ? 'border-purple-500 bg-[#7C3AED] text-white' : 'border-zinc-800 bg-transparent'
+                      }`}>
+                        {isChecked && <span className="text-[7px] font-mono font-bold">✓</span>}
+                      </div>
                     </button>
                   );
                 })}
@@ -133,70 +143,66 @@ export default function Calculator({ onOpenBooking }: CalculatorProps) {
 
           </div>
 
-          {/* Right Panel - Resulting Outputs */}
-          <div className="lg:col-span-12 xl:col-span-5 flex flex-col justify-between p-8 sm:p-10 bg-white border border-purple-100 rounded-[20px] relative overflow-hidden space-y-8 shadow-soft">
-            <div className="absolute top-0 right-0 -mr-12 -mt-12 w-48 h-48 bg-purple-500/5 rounded-full blur-2xl pointer-events-none" />
-
-            <div className="space-y-8 relative z-10">
-              <div className="flex items-center justify-between border-b border-zinc-200/80 pb-4">
-                <div className="flex items-center space-x-1.5 flex-row">
-                  <span className="w-1.5 h-1.5 bg-[#7C3AED] rounded-full animate-pulse" />
-                  <span className="font-mono text-[9px] uppercase tracking-widest text-zinc-500 font-bold">Model System Specifications</span>
+          {/* Right Side: Readouts with vertical line alignments */}
+          <div className="lg:col-span-12 xl:col-span-5 lg:border-l lg:border-white/10 lg:pl-12 flex flex-col justify-between space-y-12">
+            
+            <div className="space-y-8">
+              {/* Header Specifications */}
+              <div className="flex items-center justify-between border-b border-white/5 pb-4">
+                <div className="flex items-center space-x-2">
+                  <Receipt className="w-4 h-4 text-purple-400" />
+                  <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#A1A1AA] font-bold">PLAN SPECIFICATION</span>
                 </div>
-                <Receipt className="w-4 h-4 text-[#7C3AED]" />
+                <span className="font-mono text-[8px] text-zinc-500 font-extrabold uppercase">OVERVIEW</span>
               </div>
 
-              {/* Parameter results */}
-              <div className="space-y-6">
+              {/* Readouts Metrics */}
+              <div className="space-y-8 py-4">
                 
-                {/* Duration */}
-                <div className="flex items-center justify-between">
-                  <div className="space-y-0.5">
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-500 font-bold block">Integration Pipeline Duration</span>
-                    <h5 className="text-xs text-zinc-600">Full Scale Setup Time</h5>
+                {/* Metrics 1 */}
+                <div className="flex justify-between items-baseline border-b border-dashed border-white/5 pb-4">
+                  <div className="space-y-0.5 text-left">
+                    <span className="text-[9px] font-mono uppercase tracking-widest text-[#71717a] font-bold block">ESTIMATED SETUP TIME</span>
+                    <span className="text-xs text-zinc-400 font-light font-sans">Time to launch branding, ads, and workflows</span>
                   </div>
-                  <div className="text-right">
-                    <span className="font-serif text-xl text-zinc-900 font-normal">{calcs.timelineWeeks} Weeks</span>
-                  </div>
+                  <span className="font-serif text-3xl text-white font-normal whitespace-nowrap pl-4">{calcs.timelineWeeks} Weeks</span>
                 </div>
 
-                 {/* Staffing */}
-                <div className="flex items-center justify-between">
-                  <div className="space-y-0.5">
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-500 font-bold block">Talent Placements</span>
-                    <h5 className="text-xs text-zinc-600 font-light font-sans">Dedicated Core Operators</h5>
+                {/* Metrics 2 */}
+                <div className="flex justify-between items-baseline border-b border-dashed border-white/5 pb-4">
+                  <div className="space-y-0.5 text-left">
+                    <span className="text-[9px] font-mono uppercase tracking-widest text-[#71717a] font-bold block">RECOMMENDED HIRES</span>
+                    <span className="text-xs text-zinc-400 font-light font-sans">Experienced specialists placed on your team</span>
                   </div>
-                  <div className="text-right">
-                    <span className="font-serif text-xl text-zinc-900 font-normal">{calcs.suggestedHeadcount} Operators</span>
-                  </div>
+                  <span className="font-serif text-3xl text-white font-normal whitespace-nowrap pl-4">{calcs.suggestedHeadcount} Pros</span>
                 </div>
 
-                {/* Return */}
-                <div className="flex items-center justify-between font-normal">
-                  <div className="space-y-0.5">
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-500 font-bold block">Projected ROI Quotient</span>
-                    <h5 className="text-xs text-zinc-600 font-light font-sans">Approximate Leverage Rate</h5>
+                {/* Metrics 3 */}
+                <div className="flex justify-between items-baseline pb-2">
+                  <div className="space-y-0.5 text-left">
+                    <span className="text-[9px] font-mono uppercase tracking-widest text-purple-400 font-bold block">PROJECTED ADVERTISING ROI</span>
+                    <span className="text-xs text-zinc-400 font-light font-sans">Estimated gain on campaign performance</span>
                   </div>
-                  <div className="text-right">
-                    <span className="font-serif text-[22px] text-[#7C3AED] font-semibold">{calcs.estimatedRoi}x ROI</span>
-                  </div>
+                  <span className="font-serif text-4xl text-[#C084FC] font-semibold whitespace-nowrap pl-4">{calcs.estimatedRoi}x ROI</span>
                 </div>
 
               </div>
             </div>
 
-            {/* CTA action */}
-            <div className="space-y-4 relative z-10 pt-4 border-t border-zinc-200">
+            {/* Action flow */}
+            <div className="space-y-4 pt-6 border-t border-white/10">
               <button
+                id="calculator-proposal-btn"
                 onClick={onOpenBooking}
-                className="w-full py-4 bg-[#7C3AED] hover:bg-[#6D28D9] text-white hover:text-white text-[11px] font-mono tracking-widest uppercase rounded-full transition-all duration-300 shadow-md shadow-purple-200 cursor-pointer flex items-center justify-center space-x-2"
+                className="w-full py-4 bg-[#7C3AED] hover:bg-[#6D28D9] text-white text-[11px] font-mono tracking-widest uppercase rounded-full transition-all duration-300 shadow-md shadow-purple-900/40 flex items-center justify-center space-x-2 cursor-pointer font-bold"
               >
-                <span>Request Custom Specs</span>
+                <span>Request Custom Plan</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
-              <p className="font-mono text-[8px] text-zinc-500 text-center uppercase tracking-wider font-bold font-sans">
-                Simulations calculated using standard organizational analytics.
-              </p>
+              <div className="flex justify-between font-mono text-[7px] text-zinc-500 uppercase tracking-wider">
+                <span>GBA ESTIMATION ENGINE</span>
+                <span>All calculations are estimates</span>
+              </div>
             </div>
 
           </div>

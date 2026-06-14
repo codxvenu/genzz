@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ArrowUpRight } from 'lucide-react';
+import iconUrl from '@/icon.png';
 
 interface NavbarProps {
   onOpenBooking: () => void;
@@ -35,12 +36,12 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
   };
 
   const navLinks = [
-    { label: 'STORY', target: 'scene-scroll-story' },
-    { label: 'JOURNEY', target: 'scene-business-journey' },
-    { label: 'GBA WAY', target: 'scene-gba-enters' },
-    { label: 'SERVICES', target: 'scene-sticky-storytelling' },
-    { label: 'CLARITY', target: 'scene-transformation' },
-    { label: 'METRICS', target: 'scene-impact' }
+    { label: 'THE CHALLENGE', target: 'scene-scroll-story' },
+    { label: 'THE ROADMAP', target: 'scene-business-journey' },
+    { label: 'OUR METHOD', target: 'scene-gba-enters' },
+    { label: 'CAPABILITIES', target: 'scene-sticky-storytelling' },
+    { label: 'COORDINATION', target: 'scene-transformation' },
+    { label: 'OUTCOMES', target: 'scene-impact' }
   ];
 
   return (
@@ -48,7 +49,7 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
       id="main-navigation-bar"
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-white/80 backdrop-blur-md border-b border-black/5 py-4 shadow-sm' 
+          ? 'bg-black/75 backdrop-blur-md border-b border-white/5 py-4 shadow-2xl' 
           : 'bg-transparent py-6'
       }`}
     >
@@ -58,15 +59,14 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
           {/* Logo Brand / Identity */}
           <div 
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="flex items-center space-x-3 cursor-pointer group select-none"
+            className="flex items-center cursor-pointer group select-none"
           >
-            <div className="flex items-center justify-center w-8 h-8 rounded-full border border-purple-500/30 text-zinc-900 bg-white hover:bg-zinc-100 transition-all duration-300 shadow-sm">
-              <span className="font-serif text-sm font-normal text-zinc-900 group-hover:rotate-12 transition-all">G</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="font-serif text-lg tracking-wider text-zinc-900 font-normal leading-none" style={{ color: '#18181b' }}>GBA</span>
-              <span className="font-mono text-[7px] tracking-[0.25em] text-zinc-500 uppercase mt-0.5 font-bold">GEN-Z BUSINESS AGENCY</span>
-            </div>
+            <img 
+              src={iconUrl} 
+              alt="GBA Logo" 
+              className="h-8 sm:h-9 w-auto object-contain hover:scale-105 transition-all duration-300"
+              referrerPolicy="no-referrer"
+            />
           </div>
  
           {/* Desktop Links */}
@@ -75,7 +75,7 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
               <button 
                 key={link.target}
                 onClick={() => scrollToSection(link.target)}
-                className="text-[9px] font-mono text-zinc-600 hover:text-zinc-900 transition-colors tracking-[0.2em] cursor-pointer font-bold"
+                className="text-[9px] font-sans text-zinc-400 hover:text-white transition-colors tracking-[0.2em] cursor-pointer font-semibold"
               >
                 {link.label}
               </button>
@@ -86,7 +86,7 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
           <div className="hidden md:flex items-center space-x-4">
             <button
               onClick={onOpenBooking}
-              className="group flex items-center space-x-1.5 px-5 py-2 w-auto bg-[#7C3AED] hover:bg-[#6D28D9] text-white text-[9px] font-mono rounded-full tracking-widest font-bold uppercase transition-all shadow-md shadow-purple-900/40 cursor-pointer"
+              className="group flex items-center space-x-1.5 px-5 py-2 w-auto bg-[#7C3AED] hover:bg-[#6D28D9] text-white text-[9px] font-sans rounded-full tracking-widest font-semibold uppercase transition-all shadow-md shadow-purple-900/40 cursor-pointer"
             >
               <span>Book Call</span>
               <ArrowUpRight className="w-3.5 h-3.5 text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -97,7 +97,7 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
           <div className="md:hidden">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="px-4 py-1.5 text-[9px] font-mono text-zinc-700 hover:text-zinc-900 border border-black/10 bg-black/5 rounded-full transition-all cursor-pointer font-bold tracking-widest"
+              className="px-4 py-1.5 text-[9px] font-sans text-zinc-300 hover:text-white border border-white/10 bg-white/5 rounded-full transition-all cursor-pointer font-semibold tracking-widest"
             >
               {mobileMenuOpen ? 'CLOSE' : 'MENU'}
             </button>
@@ -108,13 +108,13 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
  
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white/95 backdrop-blur-lg border-b border-black/5 py-8 px-6 space-y-6 animate-fade-in shadow-lg">
+        <div className="md:hidden bg-black/95 backdrop-blur-lg border-b border-white/5 py-8 px-6 space-y-6 animate-fade-in">
           <div className="flex flex-col space-y-5">
             {navLinks.map(link => (
               <button 
                 key={link.target}
                 onClick={() => scrollToSection(link.target)}
-                className="text-left py-1 text-[10px] font-mono text-zinc-600 hover:text-zinc-900 transition-colors tracking-widest uppercase font-bold"
+                className="text-left py-1 text-[10px] font-sans text-zinc-400 hover:text-white transition-colors tracking-widest uppercase font-semibold"
               >
                 {link.label}
               </button>
@@ -126,7 +126,7 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
                   setMobileMenuOpen(false);
                   onOpenBooking();
                 }}
-                className="w-full flex items-center justify-center space-x-1.5 py-3.5 bg-[#7C3AED] text-white text-[10px] font-mono rounded-full font-bold tracking-widest uppercase transition-all cursor-pointer"
+                className="w-full flex items-center justify-center space-x-1.5 py-3.5 bg-[#7C3AED] text-white text-[10px] font-sans rounded-full font-semibold tracking-widest uppercase transition-all cursor-pointer"
               >
                 <span>BOOK STRATEGY CALL</span>
                 <ArrowUpRight className="w-3.5 h-3.5 text-white" />
