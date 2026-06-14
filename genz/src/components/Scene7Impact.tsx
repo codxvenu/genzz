@@ -51,10 +51,10 @@ export default function Scene7Impact() {
     <div
       ref={containerRef}
       id="scene-impact"
-      className="relative h-[320vh] bg-[#FAF9F6] select-none"
+      className="relative h-[320vh] bg-black select-none"
     >
       {/* Sticky viewport frame */}
-      <div className="sticky top-0 h-screen w-full flex flex-col justify-center items-center bg-[#FAF9F6] overflow-hidden">
+      <div className="sticky top-0 h-screen w-full flex flex-col justify-center items-center bg-black overflow-hidden">
         
         {/* Full-screen Background Image Sequence transition */}
         <div className="absolute inset-0 z-0">
@@ -62,7 +62,7 @@ export default function Scene7Impact() {
             <motion.div
               key={activeItem.image}
               initial={{ opacity: 0, scale: 1.04 }}
-              animate={{ opacity: 0.15, scale: 1 }}
+              animate={{ opacity: 0.35, scale: 1 }}
               exit={{ opacity: 0, scale: 0.98 }}
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
               className="absolute inset-0 w-full h-full"
@@ -70,17 +70,17 @@ export default function Scene7Impact() {
               <img
                 src={activeItem.image}
                 alt="Cinematic Architectural Space"
-                className="w-full h-full object-cover filter brightness-[1.05] contrast-[0.95] grayscale opacity-80"
+                className="w-full h-full object-cover filter brightness-[0.7] contrast-[1.1] grayscale"
                 referrerPolicy="no-referrer"
               />
             </motion.div>
           </AnimatePresence>
-          <div className="absolute inset-0 bg-gradient-to-b from-[#FAF9F6] via-transparent to-[#FAF9F6] z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-10" />
         </div>
 
         {/* Minimal status indicator indexes */}
-        <div className="absolute top-16 left-8 right-8 flex justify-between items-center z-20 border-b border-black/5 pb-4">
-          <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-zinc-500 font-bold">
+        <div className="absolute top-16 left-8 right-8 flex justify-between items-center z-20 border-b border-white/5 pb-4">
+          <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-zinc-400 font-bold">
             PHASE III &bull; THE COVENANT
           </span>
           <div className="flex items-center space-x-2">
@@ -89,7 +89,7 @@ export default function Scene7Impact() {
               {slides.map((_, i) => (
                 <div 
                   key={i}
-                  className={`h-[2px] transition-all duration-300 ${i === activeSlide ? 'bg-zinc-800 w-5' : 'bg-zinc-200 w-2'}`}
+                  className={`h-[2px] transition-all duration-300 ${i === activeSlide ? 'bg-white w-5' : 'bg-white/10 w-2'}`}
                 />
               ))}
             </div>
@@ -107,10 +107,10 @@ export default function Scene7Impact() {
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="space-y-4"
             >
-              <span className="font-mono text-[10px] tracking-[0.3em] text-[#7C3AED] font-bold block mb-2 uppercase">
+              <span className="font-mono text-[10px] tracking-[0.3em] text-purple-400 font-bold block mb-2 uppercase">
                 {activeItem.tagline}
               </span>
-              <h2 className="font-serif text-5xl sm:text-7xl md:text-8xl text-zinc-900 font-normal leading-[1.05] tracking-tight max-w-4xl">
+              <h2 className="font-serif text-5xl sm:text-7xl md:text-8xl text-white font-normal leading-[1.05] tracking-tight max-w-4xl">
                 {activeItem.text.endsWith('.') ? (
                   <>
                     <span>{activeItem.text.slice(0, -1)}</span>
@@ -126,7 +126,7 @@ export default function Scene7Impact() {
 
         {/* Bottom indicator */}
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-1 opacity-40 z-20">
-          <span className="font-mono text-[8px] text-zinc-600 uppercase tracking-widest font-extrabold">CONTINUE DOWNWARD</span>
+          <span className="font-mono text-[8px] text-zinc-500 uppercase tracking-widest font-extrabold">CONTINUE DOWNWARD</span>
         </div>
 
       </div>

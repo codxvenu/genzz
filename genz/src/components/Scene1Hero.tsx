@@ -29,7 +29,7 @@ export default function Scene1Hero({ onOpenBooking, onStartJourney }: HeroProps)
     <section
       id="scene-hero"
       ref={containerRef}
-      className="relative min-h-screen flex flex-col justify-center items-center bg-[#FAF9F6] overflow-hidden px-4 sm:px-6 lg:px-8 select-none"
+      className="relative min-h-screen flex flex-col justify-center items-center bg-black overflow-hidden px-4 sm:px-6 lg:px-8 select-none"
     >
       {/* Background Cinematic image + purple gradient overlay */}
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -45,14 +45,14 @@ export default function Scene1Hero({ onOpenBooking, onStartJourney }: HeroProps)
           <img
             src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1800"
             alt="Luxury Cinematic Space"
-            className="w-full h-full object-cover filter brightness-[1.05] contrast-[1.0] grayscale opacity-15"
+            className="w-full h-full object-cover filter brightness-[0.25] contrast-[1.15]"
             referrerPolicy="no-referrer"
-          ></img>
+          />
         </motion.div>
         
         {/* Aggressive radial and atmospheric gradient overlays */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#FAF9F6]/80 to-[#FAF9F6] z-10" />
-        <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-200/30 rounded-full blur-[140px] mix-blend-multiply pointer-events-none z-10 animate-pulse-soft" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/90 to-black z-10" />
+        <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-900/15 rounded-full blur-[140px] mix-blend-screen pointer-events-none z-10 animate-pulse-soft" />
       </div>
 
       {/* Hero Content Area */}
@@ -63,10 +63,10 @@ export default function Scene1Hero({ onOpenBooking, onStartJourney }: HeroProps)
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="inline-flex items-center space-x-2 border border-black/10 bg-black/5 backdrop-blur-md px-4 py-1.5 rounded-full"
+          className="inline-flex items-center space-x-2 border border-white/10 bg-white/5 backdrop-blur-md px-4 py-1.5 rounded-full"
         >
           <span className="w-1.5 h-1.5 bg-[#7C3AED] rounded-full animate-ping" />
-          <span className="font-mono text-[9px] tracking-[0.3em] text-zinc-600 uppercase font-bold">
+          <span className="font-mono text-[9px] tracking-[0.3em] text-[#A1A1AA] uppercase font-bold">
             GBA // ELITE GROWTH PARTNER
           </span>
         </motion.div>
@@ -77,7 +77,7 @@ export default function Scene1Hero({ onOpenBooking, onStartJourney }: HeroProps)
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="font-serif text-[48px] sm:text-7xl md:text-8xl lg:text-[110px] text-zinc-900 font-normal tracking-tight leading-[0.95]"
+            className="font-serif text-[48px] sm:text-7xl md:text-8xl lg:text-[110px] text-white font-normal tracking-tight leading-[0.95]"
           >
             Growth <br />
             <span className="text-gradient-purple italic font-normal text-[44px] sm:text-[68px] md:text-[84px] lg:text-[105px]">
@@ -91,7 +91,7 @@ export default function Scene1Hero({ onOpenBooking, onStartJourney }: HeroProps)
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="font-sans text-xs sm:text-sm md:text-base text-zinc-600 font-light max-w-md tracking-wider leading-relaxed"
+          className="font-sans text-xs sm:text-sm md:text-base text-zinc-400 font-light max-w-md tracking-wider leading-relaxed"
         >
           GBA becomes the growth department behind ambitious companies.
         </motion.p>
@@ -118,10 +118,10 @@ export default function Scene1Hero({ onOpenBooking, onStartJourney }: HeroProps)
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-2 cursor-pointer z-20"
         onClick={onStartJourney}
       >
-        <span className="font-mono text-[8px] tracking-[0.3em] text-zinc-600 uppercase font-bold hover:text-zinc-900 transition-colors">
+        <span className="font-mono text-[8px] tracking-[0.3em] text-[#A1A1AA] uppercase font-bold hover:text-white transition-colors">
           REVEAL NARRATIVE
         </span>
-        <div className="w-[1px] h-10 bg-gradient-to-b from-zinc-800 to-transparent opacity-40 animate-pulse" />
+        <div className="w-[1px] h-10 bg-gradient-to-b from-white to-transparent opacity-40 animate-pulse" />
       </div>
     </section>
   );

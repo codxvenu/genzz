@@ -4,6 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gen-Z Business Agency | Stand Together. Build Together. Grow Together.</title>
+    <script>
+      // Gracefully handle iframe/sandboxed environments where window.fetch is a read-only getter
+      (function() {
+        try {
+          var originalSrc = window.fetch;
+          var activeFetch = originalSrc;
+          Object.defineProperty(window, 'fetch', {
+            get: function() { return activeFetch; },
+            set: function(newFetch) { activeFetch = newFetch; },
+            configurable: true,
+            enumerable: true
+          });
+        } catch (err) {
+          console.warn("[Fetch Patch] Unable to define custom fetch property descriptor:", err);
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

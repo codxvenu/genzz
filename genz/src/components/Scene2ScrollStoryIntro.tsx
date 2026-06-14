@@ -40,13 +40,13 @@ export default function Scene2ScrollStoryIntro() {
     <div
       ref={containerRef}
       id="scene-scroll-story"
-      className="relative h-[300vh] bg-[#FAF9F6] select-none pointer-events-none"
+      className="relative h-[300vh] bg-black select-none pointer-events-none"
     >
       {/* Sticky content frame */}
-      <div className="sticky top-0 h-screen w-full flex flex-col justify-center items-center overflow-hidden bg-[#FAF9F6] px-4 sm:px-8">
+      <div className="sticky top-0 h-screen w-full flex flex-col justify-center items-center overflow-hidden bg-black px-4 sm:px-8">
         
         {/* Subtle royal purple atmospheric glow behind the words */}
-        <div className="absolute w-[500px] h-[500px] rounded-full bg-[#7C3AED]/10 blur-[150px] mix-blend-multiply pointer-events-none" />
+        <div className="absolute w-[500px] h-[500px] rounded-full bg-[#7C3AED]/5 blur-[150px] mix-blend-screen pointer-events-none" />
 
         {/* Mammoth Morphing Word with AnimatePresence */}
         <div className="flex flex-col items-center justify-center text-center max-w-4xl z-10">
@@ -59,7 +59,7 @@ export default function Scene2ScrollStoryIntro() {
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className="flex flex-col items-center space-y-4"
             >
-              <h2 className="font-serif text-[60px] sm:text-[96px] md:text-[130px] lg:text-[160px] font-normal tracking-tight text-zinc-900 leading-none">
+              <h2 className="font-serif text-[60px] sm:text-[96px] md:text-[130px] lg:text-[160px] font-normal tracking-tight text-white leading-none">
                 {activeItem.word.endsWith('.') ? (
                   <>
                     <span>{activeItem.word.slice(0, -1)}</span>

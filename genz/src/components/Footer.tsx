@@ -17,9 +17,9 @@ export default function Footer({ onOpenBooking }: FooterProps) {
       <div className="site-footer__inner">
         {/* Top Grid details */}
         <div className="site-footer__top">
-          <h2 className="font-sans font-light tracking-tight text-zinc-900 leading-none">
+          <h2 className="font-sans font-light tracking-tight text-white leading-none">
             The Complete outsourced growth department <br />
-            <span className="text-[#7C3AED] font-serif italic">behind modern businesses.</span>
+            <span className="text-[#B388FF] font-serif italic">behind modern businesses.</span>
           </h2>
           
           <nav className="site-footer__nav" aria-label="Services Links">

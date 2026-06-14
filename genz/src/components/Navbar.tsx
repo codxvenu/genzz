@@ -48,7 +48,7 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
       id="main-navigation-bar"
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-white/80 backdrop-blur-md border-b border-black/5 py-4 shadow-sm' 
+          ? 'bg-black/75 backdrop-blur-md border-b border-white/5 py-4 shadow-2xl' 
           : 'bg-transparent py-6'
       }`}
     >
@@ -60,12 +60,12 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="flex items-center space-x-3 cursor-pointer group select-none"
           >
-            <div className="flex items-center justify-center w-8 h-8 rounded-full border border-purple-500/30 text-zinc-900 bg-white hover:bg-zinc-100 transition-all duration-300 shadow-sm">
-              <span className="font-serif text-sm font-normal text-zinc-900 group-hover:rotate-12 transition-all">G</span>
+            <div className="flex items-center justify-center w-8 h-8 rounded-full border border-purple-500/30 text-white bg-black hover:bg-neutral-900 transition-all duration-300">
+              <span className="font-serif text-sm font-normal text-white group-hover:rotate-12 transition-all">G</span>
             </div>
             <div className="flex flex-col">
-              <span className="font-serif text-lg tracking-wider text-zinc-900 font-normal leading-none" style={{ color: '#18181b' }}>GBA</span>
-              <span className="font-mono text-[7px] tracking-[0.25em] text-zinc-500 uppercase mt-0.5 font-bold">GEN-Z BUSINESS AGENCY</span>
+              <span className="font-serif text-lg tracking-wider text-white font-normal leading-none">GBA</span>
+              <span className="font-mono text-[7px] tracking-[0.25em] text-[#A1A1AA] uppercase mt-0.5 font-bold">GEN-Z BUSINESS AGENCY</span>
             </div>
           </div>
  
@@ -75,7 +75,7 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
               <button 
                 key={link.target}
                 onClick={() => scrollToSection(link.target)}
-                className="text-[9px] font-mono text-zinc-600 hover:text-zinc-900 transition-colors tracking-[0.2em] cursor-pointer font-bold"
+                className="text-[9px] font-mono text-zinc-400 hover:text-white transition-colors tracking-[0.2em] cursor-pointer font-bold"
               >
                 {link.label}
               </button>
@@ -97,7 +97,7 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
           <div className="md:hidden">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="px-4 py-1.5 text-[9px] font-mono text-zinc-700 hover:text-zinc-900 border border-black/10 bg-black/5 rounded-full transition-all cursor-pointer font-bold tracking-widest"
+              className="px-4 py-1.5 text-[9px] font-mono text-zinc-300 hover:text-white border border-white/10 bg-white/5 rounded-full transition-all cursor-pointer font-bold tracking-widest"
             >
               {mobileMenuOpen ? 'CLOSE' : 'MENU'}
             </button>
@@ -108,13 +108,13 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
  
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white/95 backdrop-blur-lg border-b border-black/5 py-8 px-6 space-y-6 animate-fade-in shadow-lg">
+        <div className="md:hidden bg-black/95 backdrop-blur-lg border-b border-white/5 py-8 px-6 space-y-6 animate-fade-in">
           <div className="flex flex-col space-y-5">
             {navLinks.map(link => (
               <button 
                 key={link.target}
                 onClick={() => scrollToSection(link.target)}
-                className="text-left py-1 text-[10px] font-mono text-zinc-600 hover:text-zinc-900 transition-colors tracking-widest uppercase font-bold"
+                className="text-left py-1 text-[10px] font-mono text-zinc-400 hover:text-white transition-colors tracking-widest uppercase font-bold"
               >
                 {link.label}
               </button>
