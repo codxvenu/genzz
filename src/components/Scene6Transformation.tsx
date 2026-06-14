@@ -96,8 +96,8 @@ export default function Scene6Transformation() {
                     <span className="font-mono text-[8px] text-zinc-500 tracking-widest font-bold group-hover:text-purple-400 transition-colors">
                       CHANNEL_0{channel.id}
                     </span>
-                    <span className={`font-serif text-lg tracking-tight transition-all ${
-                      isActive ? 'text-white font-normal' : 'text-zinc-500 group-hover:text-zinc-300'
+                    <span className={`font-roboto text-lg tracking-tight transition-all ${
+                      isActive ? 'text-white font-semibold' : 'text-zinc-500 group-hover:text-zinc-300'
                     }`}>
                       {channel.title}
                     </span>

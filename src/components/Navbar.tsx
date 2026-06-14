@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import iconUrl from '@/icon.png';
 
@@ -9,12 +9,28 @@ interface NavbarProps {
 export default function Navbar({ onOpenBooking }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      const currentScrollY = window.scrollY;
+      setScrolled(currentScrollY > 20);
+
+      // Avoid trigger on rapid scroll bounce at the top of the page on iOS/Mac
+      if (currentScrollY <= 50) {
+        setVisible(true);
+      } else if (currentScrollY > lastScrollY.current) {
+        // Scrolling down
+        setVisible(false);
+      } else {
+        // Scrolling up
+        setVisible(true);
+      }
+      lastScrollY.current = currentScrollY;
     };
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -47,9 +63,11 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
   return (
     <nav
       id="main-navigation-bar"
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 border-none ${
+        visible ? 'translate-y-0' : '-translate-y-full'
+      } ${
         scrolled 
-          ? 'bg-black/75 backdrop-blur-md border-b border-white/5 py-4 shadow-2xl' 
+          ? 'bg-black/75 backdrop-blur-md py-4 shadow-2xl' 
           : 'bg-transparent py-6'
       }`}
     >

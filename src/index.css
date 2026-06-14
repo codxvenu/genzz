@@ -1,10 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;650;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;650;700;800&family=JetBrains+Mono:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;650;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;650;700;800&family=JetBrains+Mono:wght@300;400;500;600&family=Roboto:wght@300;400;500;700&display=swap');
 @import "tailwindcss";
 
 @theme {
   --font-serif: "Playfair Display", ui-serif, Georgia, serif;
   --font-sans: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-roboto: "Roboto", sans-serif;
+  --font-caliber: "Calibri", "Caliber", sans-serif;
 }
 
 @layer base {
